@@ -1,4 +1,4 @@
-package benchmk
+package benchmk_1
 
 import (
 	"contrast-benchmark"
@@ -18,6 +18,7 @@ var err error
 func initFlyDB() {
 	fmt.Println("init FlyDB")
 	opts := config.DefaultOptions
+	opts.FIOType = config.FileIOType
 	opts.DirPath = filepath.Join("benchmark", "flydb")
 	//fmt.Printf("opts.DirPath: %s\n", opts.DirPath)
 	//opts.DirPath = "F:\\ProjectsData\\golang\\flydb\\benchmark\\"

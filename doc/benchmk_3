@@ -1,0 +1,27 @@
+goos: linux
+goarch: amd64
+pkg: ccontrast-benchmark/benchmk_3
+cpu: AMD EPYC 9K65 192-Core Processor
+标准型 SA9 | SA9.2XLARGE16
+Ubuntu Server 24.04 LTS 64位 8核 32GB
+
+BenchmarkReadWithBitcaskDB/read4K-8          1000000        1662 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     10120 B/op        10 allocs/op
+BenchmarkReadWithTrainDB/read4K-8             197790        6317 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     24339 B/op       515 allocs/op
+BenchmarkReadWithBadger/read4K-8              294015        3504 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     21813 B/op        45 allocs/op
+BenchmarkReadWithLevelDB/read4K-8             149002        7926 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     56962 B/op        35 allocs/op
+BenchmarkReadWithBoltDB/read4K-8             1278247       891.5 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)       832 B/op        13 allocs/op
+
+BenchmarkWriteWithBitcaskDB/write4K-8         661616        2825 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)      1303 B/op        10 allocs/op
+BenchmarkWriteWithTrainDB/write4K-8           188517        9802 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     15089 B/op       100 allocs/op
+BenchmarkWriteWithBadger/write4K-8            351565        4922 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)     16301 B/op        36 allocs/op
+BenchmarkWriteWithLevelDB/write4K-8           264878        9333 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)      1398 B/op         9 allocs/op
+BenchmarkWriteWithBoltDB/write4K-8            370518        2936 ns/op           0 AvgRSS(GB)           0 PeakRSS(GB)      7255 B/op        11 allocs/op
+
+
+BenchmarkDiskUsageWithBitcaskDB/1_million-8         1000000000           0.0007977 ns/op           3.880 DiskUsage(GB)
+BenchmarkDiskUsageWithTrainDB/1_million-8           1000000000           0.0009136 ns/op           4.920 DiskUsage(GB)
+BenchmarkDiskUsageWithLevelDB/1_million-8           1000000000           0.001212 ns/op           0.2562 DiskUsage(GB)
+BenchmarkDiskUsageWithBadger/1_million-8            1000000000           0.0008651 ns/op           2.429 DiskUsage(GB)
+BenchmarkDiskUsageWithBoltDB/1_million-8            1000000000           0.0004582 ns/op           5.775 DiskUsage(GB)
+
+

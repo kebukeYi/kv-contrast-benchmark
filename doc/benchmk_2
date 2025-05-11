@@ -1,0 +1,12 @@
+goos: windows
+goarch: amd64
+pkg: contrast-benchmk_2
+cpu: Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz
+
+BenchmarkPut/put4K-4                        37174       47025 ns/op     36273 B/op       146 allocs/op
+BenchmarkPut/batchPut4K-4                   62372       37257 ns/op     32945 B/op       132 allocs/op
+BenchmarkPut/concurrentPut4K-4              55734       20645 ns/op     16431 B/op       127 allocs/op
+BenchmarkPut/concurrentBatchPut4K-4         64466       19408 ns/op     15314 B/op       123 allocs/op
+
+BenchmarkGet/get4K-4                        48296       22175 ns/op     24102 B/op       327 allocs/op
+BenchmarkGet/concurrentGet4K-4             264603        4520 ns/op      6326 B/op       187 allocs/op

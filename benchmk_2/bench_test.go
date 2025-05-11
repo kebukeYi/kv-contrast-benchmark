@@ -58,16 +58,19 @@ func initTrainDB() {
 }
 
 // -benchtime=60s -count=3 -timeout=50m
-func BenchmarkPutGet(b *testing.B) {
-	b.Run("put4K", benchmarkPut)           // ok
-	b.Run("batchPut4K", benchmarkBatchPut) // ok
-
-	b.Run("get4K", benchmarkGet) //
-
+func BenchmarkPut(b *testing.B) {
+	b.Run("put4K", benchmarkPut)
+	b.Run("batchPut4K", benchmarkBatchPut)
 	b.Run("concurrentPut4K", benchmarkConcurrentPut)
-	b.Run("concurrentGet4K", benchmarkConcurrentGet)
-
 	b.Run("concurrentBatchPut4K", benchmarkConcurrentBatchPut)
+}
+
+func BenchmarkGet(b *testing.B) {
+	initTrainDB()
+	defer db.Close()
+	getPrepare(b)
+	b.Run("get4K", benchmarkGet)
+	b.Run("concurrentGet4K", benchmarkConcurrentGet)
 }
 
 func benchmarkPut(b *testing.B) {
@@ -129,7 +132,7 @@ func benchmarkBatchPut(b *testing.B) {
 
 func getPrepare(b *testing.B) {
 	batch := make([]*model.Entry, 0, BatchSize)
-	for i := 0; i < 100001; i++ {
+	for i := 1; i < 100001; i++ {
 		entry := model.NewEntry(contrast_benchmark.GetKey(i), bin4KB)
 		entry.Key = model.KeyWithTs(entry.Key)
 
@@ -144,15 +147,11 @@ func getPrepare(b *testing.B) {
 }
 
 func benchmarkGet(b *testing.B) {
-	initTrainDB()
-	defer db.Close()
-
-	getPrepare(b)
-
 	b.ResetTimer()
 	b.ReportAllocs()
+
 	total := 0
-	for i := 0; i < b.N; i++ {
+	for i := 1; i < b.N; i++ {
 		_, err := db.Get(contrast_benchmark.GetKey(i % 100000))
 		if err != nil {
 			total++
@@ -163,11 +162,6 @@ func benchmarkGet(b *testing.B) {
 }
 
 func benchmarkConcurrentGet(b *testing.B) {
-	initTrainDB()
-	defer db.Close()
-
-	getPrepare(b)
-
 	b.ResetTimer()
 	b.ReportAllocs()
 	var total int32

@@ -1,4 +1,4 @@
-package benchmk
+package benchmk_1
 
 import (
 	"contrast-benchmark"
