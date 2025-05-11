@@ -22,11 +22,11 @@ Based on the results of a simple benchmark test of the open source kv database w
 ```
 goos: windows
 goarch: amd64
-pkg: contrast-benchmark
+pkg: contrast-benchmark_1
 cpu: Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz
 
-Benchmark_PutValue_GoLevelDB-4   	 35443	     32395 ns/op	    2490 B/op	      12 allocs/op
-Benchmark_PutValue_FlyDB-2-linux   	 125092	      9319 ns/op	    2932 B/op	      18 allocs/op
+Benchmark_PutValue_GoLevelDB-4   	35443	     32395 ns/op	    2490 B/op	      12 allocs/op
+Benchmark_PutValue_FlyDB-2-linux   	125092	      9319 ns/op	    2932 B/op	      18 allocs/op
 Benchmark_PutValue_RoseDB-4   	        35956	     33159 ns/op	    2556 B/op	      17 allocs/op
 Benchmark_PutValue_Badger-4   	        36817	     30879 ns/op	    5314 B/op	      49 allocs/op
 Benchmark_PutValue_TrainDB-4   	        40033	     29274 ns/op	    6275 B/op	     130 allocs/op
@@ -38,8 +38,7 @@ Benchmark_GetValue_GoLevelDB-4   	273182	      4387 ns/op	    1346 B/op	      15
 Benchmark_GetValue_FlyDB-2-linux   	1410592	     788.7 ns/op	     374 B/op	       6 allocs/op
 Benchmark_GetValue_RoseDB-4   	        110493	     10933 ns/op	    1326 B/op	      10 allocs/op
 Benchmark_GetValue_Badger-4   	        115933	     10195 ns/op	    4862 B/op	      37 allocs/op
-Benchmark_GetValue_TrainDB-4   	            1	1494532700 ns/op	275487304 B/op	 1791189 allocs/op
-
+Benchmark_GetValue_TrainDB-4   	        61551	     17489 ns/op	   11810 B/op	     270 allocs/op
 Benchmark_GetValue_BoltDB-4   	        498140	      2876 ns/op	     720 B/op	      25 allocs/op
 Benchmark_GetValue_Pebble-4   	        33540	     38089 ns/op	   14859 B/op	      20 allocs/op
 ````
@@ -48,7 +47,7 @@ Benchmark_GetValue_Pebble-4   	        33540	     38089 ns/op	   14859 B/op	    
 ```
 goos: linux
 goarch: amd64
-pkg: contrast-benchmark
+pkg: contrast-benchmark_1
 cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
 
 Benchmark_PutValue_RoseDB
