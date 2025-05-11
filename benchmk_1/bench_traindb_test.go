@@ -22,24 +22,6 @@ func initTrainDB() {
 	}
 	triandb = trianDB
 }
-
-// -benchtime=60s -timeout=30m -count=3
-func Benchmark_PutValue_TrainDB(b *testing.B) {
-	initTrainDB()
-	defer triandb.Close()
-	b.ResetTimer()
-	b.ReportAllocs()
-
-	for i := 0; i < b.N; i++ {
-		entry := model.NewEntry(contrast_benchmark.GetKey(i), contrast_benchmark.GetValue())
-		err = triandb.Set(entry)
-		if err != nil {
-			panic(err)
-			return
-		}
-	}
-}
-
 func initTrainDBData() {
 	batchSize := 50
 	threshold := 500000
@@ -60,12 +42,38 @@ func initTrainDBData() {
 	}
 }
 
-// -benchtime=60s -timeout=30m -count=3
-func Benchmark_GetValue_TrainDB(b *testing.B) {
+func BenchmarkPutValue(b *testing.B) {
+	// -benchtime=60s -timeout=30m -count=3
+	b.Run("benchmark_PutValue_TrainDB", benchmark_PutValue_TrainDB)
+}
+
+func BenchmarkGetValue(b *testing.B) {
 	initTrainDB()
 	initTrainDBData()
 	defer triandb.Close()
+	// -benchtime=60s -timeout=30m -count=3
+	b.Run("benchmark_GetValue_TrainDB", benchmark_GetValue_TrainDB)
+}
 
+// -benchtime=60s -timeout=30m -count=3
+func benchmark_PutValue_TrainDB(b *testing.B) {
+	initTrainDB()
+	defer triandb.Close()
+	b.ResetTimer()
+	b.ReportAllocs()
+
+	for i := 0; i < b.N; i++ {
+		entry := model.NewEntry(contrast_benchmark.GetKey(i), contrast_benchmark.GetValue())
+		err = triandb.Set(entry)
+		if err != nil {
+			panic(err)
+			return
+		}
+	}
+}
+
+// -benchtime=60s -timeout=30m -count=3
+func benchmark_GetValue_TrainDB(b *testing.B) {
 	b.ResetTimer()
 	b.ReportAllocs()
 
