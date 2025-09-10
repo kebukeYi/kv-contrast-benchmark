@@ -7,7 +7,7 @@ require (
 	github.com/boltdb/bolt v1.3.1
 	github.com/cockroachdb/pebble v1.1.5
 	github.com/dgraph-io/badger/v4 v4.7.0
-	github.com/kebukeYi/TrainDB v1.0.10
+	github.com/kebukeYi/TrainKV v1.0.14
 	github.com/nutsdb/nutsdb v1.0.4
 	github.com/rosedblabs/rosedb/v2 v2.4.0
 	github.com/stretchr/testify v1.10.0

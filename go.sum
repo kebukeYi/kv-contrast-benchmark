@@ -79,6 +79,7 @@ github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
 github.com/kebukeYi/TrainDB v1.0.10 h1:9ConMPSAhcVkVNa5jTOs7sa6LdoTtUFFjnmlHKUKPDE=
 github.com/kebukeYi/TrainDB v1.0.10/go.mod h1:QrUVyM+aKgHwfd84pX+A7wJrx+iYA5blj62ey786468=
+github.com/kebukeYi/TrainKV v1.0.14/go.mod h1:/ZQ9FYloef8D4vIlkdqbflkxQTNo1LqheJnQXKONOO0=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/klauspost/compress v1.18.0 h1:c/Cqfb0r+Yi+JtIEq73FWXVkRonBlf0CRNYc8Zttxdo=

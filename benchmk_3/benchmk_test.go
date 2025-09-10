@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"github.com/boltdb/bolt"
 	"github.com/dgraph-io/badger/v4"
-	"github.com/kebukeYi/TrainDB"
-	"github.com/kebukeYi/TrainDB/lsm"
-	"github.com/kebukeYi/TrainDB/model"
+	"github.com/kebukeYi/TrainKV"
+	"github.com/kebukeYi/TrainKV/lsm"
+	"github.com/kebukeYi/TrainKV/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/syndtr/goleveldb/leveldb"
 	bitcask "github.com/wenzhang-dev/bitcaskDB"
@@ -90,10 +90,10 @@ func getBoltDB(b *testing.B) *bolt.DB {
 	return db
 }
 
-func getTrainDB(b *testing.B) *TrainDB.TrainKVDB {
+func getTrainDB(b *testing.B) *TrainKV.TrainKV {
 	dir := "./trainDB"
 	contrast_benchmark.ClearDir(dir)
-	trainDB, err, _ := TrainDB.Open(lsm.GetLSMDefaultOpt(dir))
+	trainDB, err, _ := TrainKV.Open(lsm.GetLSMDefaultOpt(dir))
 	if err != nil {
 		assert.Nil(b, err)
 	}
@@ -262,7 +262,7 @@ func BenchmarkReadWithTrainDB(b *testing.B) {
 		benchmarkReadWithTrainDB(b, db, threshold)
 	})
 }
-func benchmarkReadWithTrainDB(b *testing.B, db *TrainDB.TrainKVDB, threshold int) {
+func benchmarkReadWithTrainDB(b *testing.B, db *TrainKV.TrainKV, threshold int) {
 	rssSamples = make([]uint64, 0, 120)
 
 	stopCh = make(chan struct{})
@@ -487,7 +487,7 @@ func BenchmarkWriteWithTrainDB(b *testing.B) {
 		benchmarkWriteWithTrainDB(b, db)
 	})
 }
-func benchmarkWriteWithTrainDB(b *testing.B, db *TrainDB.TrainKVDB) {
+func benchmarkWriteWithTrainDB(b *testing.B, db *TrainKV.TrainKV) {
 	rssSamples = make([]uint64, 0, 120)
 
 	stopCh = make(chan struct{})

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	contrast_benchmark "contrast-benchmark"
 	"fmt"
-	"github.com/kebukeYi/TrainDB/model"
+	"github.com/kebukeYi/TrainKV/model"
 	"os/exec"
 	"strconv"
 	"strings"

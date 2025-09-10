@@ -4,9 +4,9 @@ import (
 	"contrast-benchmark"
 	"crypto/sha1"
 	"fmt"
-	"github.com/kebukeYi/TrainDB"
-	"github.com/kebukeYi/TrainDB/lsm"
-	"github.com/kebukeYi/TrainDB/model"
+	"github.com/kebukeYi/TrainKV"
+	"github.com/kebukeYi/TrainKV/lsm"
+	"github.com/kebukeYi/TrainKV/model"
 	"github.com/stretchr/testify/assert"
 	"strconv"
 	"sync/atomic"
@@ -15,7 +15,7 @@ import (
 
 var (
 	dir string
-	db  *TrainDB.TrainKVDB
+	db  *TrainKV.TrainKV
 )
 
 const BatchSize = 50
@@ -50,7 +50,7 @@ func initTrainDB() {
 	// fmt.Println("init TrainDB")
 	dir := "./TrainDB"
 	contrast_benchmark.ClearDir(dir)
-	trainDB, err, _ := TrainDB.Open(lsm.GetLSMDefaultOpt(dir))
+	trainDB, err, _ := TrainKV.Open(lsm.GetLSMDefaultOpt(dir))
 	if err != nil {
 		panic(err)
 	}

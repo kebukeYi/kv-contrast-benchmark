@@ -3,20 +3,20 @@ package benchmk_1
 import (
 	"contrast-benchmark"
 	"fmt"
-	"github.com/kebukeYi/TrainDB"
-	"github.com/kebukeYi/TrainDB/lsm"
-	"github.com/kebukeYi/TrainDB/model"
+	"github.com/kebukeYi/TrainKV"
+	"github.com/kebukeYi/TrainKV/lsm"
+	"github.com/kebukeYi/TrainKV/model"
 	"testing"
 )
 
-var triandb *TrainDB.TrainKVDB
+var triandb *TrainKV.TrainKV
 
 func initTrainDB() {
 	// fmt.Println("init TrainDB")
 	dir := "./trainDB"
 	//dir := "F:\\ProjectsData\\golang\\TrainDB\\benchmk"
 	contrast_benchmark.ClearDir(dir)
-	trianDB, err, _ := TrainDB.Open(lsm.GetLSMDefaultOpt(dir))
+	trianDB, err, _ := TrainKV.Open(lsm.GetLSMDefaultOpt(dir))
 	if err != nil {
 		panic(err)
 	}
